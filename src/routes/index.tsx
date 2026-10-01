@@ -15,12 +15,14 @@ import {
   Mail,
   Menu,
   MessageCircle,
+  Moon,
   Phone,
   Play,
   ShieldCheck,
   ShoppingBag,
   Sparkles,
   Star,
+  Sun,
   TrendingUp,
   X,
   Youtube,
@@ -29,7 +31,9 @@ import {
 import { useState, type ReactNode } from "react";
 
 import heroMascot from "@/assets/macca-hero-mascot.png";
+import heroMascotDark from "@/assets/macca-hero-mascot-dark-ready.png";
 import waveMascot from "@/assets/macca-wave-mascot.png";
+import waveMascotDark from "@/assets/macca-wave-mascot-dark-ready.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -131,6 +135,26 @@ function Kicker({ children }: { children: ReactNode }) {
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  function toggleTheme() {
+    const nextTheme = !darkMode;
+    setDarkMode(nextTheme);
+    document.documentElement.classList.toggle("dark", nextTheme);
+    window.localStorage.setItem("macaca-theme", nextTheme ? "dark" : "light");
+  }
+
+  useState(() => {
+    if (typeof window === "undefined") return false;
+    const savedTheme = window.localStorage.getItem("macaca-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const shouldUseDark = savedTheme ? savedTheme === "dark" : prefersDark;
+    setTimeout(() => {
+      setDarkMode(shouldUseDark);
+      document.documentElement.classList.toggle("dark", shouldUseDark);
+    }, 0);
+    return false;
+  });
 
   return (
     <main className="site-shell">
@@ -147,6 +171,15 @@ function Index() {
             <ActionLink outline>Request Demo</ActionLink>
             <a className="action-link" href="#contact">Contact Sales</a>
           </div>
+          <button
+            className="theme-button"
+            type="button"
+            onClick={toggleTheme}
+            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+            title={darkMode ? "Light mode" : "Dark mode"}
+          >
+            {darkMode ? <Sun /> : <Moon />}
+          </button>
           <button
             className="menu-button"
             type="button"
@@ -172,7 +205,7 @@ function Index() {
         </div>
 
         <div className="hero-visual">
-          <img src={heroMascot} alt="Macaca AI assistant working on a laptop" width={1024} height={1024} />
+          <img src={darkMode ? heroMascotDark : heroMascot} alt="Macaca AI assistant working on a laptop" width={1024} height={1024} />
           <div className="float-card call-card">
             <strong>Call Analytics</strong>
             <div className="waveform" aria-hidden="true">
@@ -258,7 +291,7 @@ function Index() {
           </div>
           <div className="impact-visual">
             <div className="speech-bubble">I'm Macaca AI!<br /><b>Your 24/7 AI assistant.</b></div>
-            <img src={waveMascot} alt="Macaca AI assistant waving" loading="lazy" width={1024} height={768} />
+            <img src={darkMode ? waveMascotDark : waveMascot} alt="Macaca AI assistant waving" loading="lazy" width={1024} height={768} />
             <div className="impact-card"><CircleCheckBig /><span>Customer Sentiment<small>Positive <b>92%</b></small></span></div>
           </div>
         </div>
@@ -293,7 +326,7 @@ function Index() {
       </section>
 
       <section id="contact" className="final-cta page-width">
-        <img src={waveMascot} alt="Macaca AI mascot" loading="lazy" width={1024} height={768} />
+        <img src={darkMode ? waveMascotDark : waveMascot} alt="Macaca AI mascot" loading="lazy" width={1024} height={768} />
         <div><small>READY TO GET STARTED</small><h2>Let's Build a Smarter,<br />More Human Tomorrow</h2><p>Unlock the full potential of your customer conversations with Macaca AI.</p></div>
         <div className="cta-actions"><ActionLink>Request Demo</ActionLink><ActionLink outline>Contact Sales</ActionLink></div>
       </section>
