@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep the marketing experience as a single scrolling home page because its screenshot-led composition depends on continuous visual storytelling.
