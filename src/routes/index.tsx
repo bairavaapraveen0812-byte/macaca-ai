@@ -28,7 +28,7 @@ import {
   Youtube,
   Zap,
 } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import heroMascot from "@/assets/macca-hero-mascot.png";
 import heroMascotDark from "@/assets/macca-hero-mascot-dark-ready.png";
@@ -144,17 +144,13 @@ function Index() {
     window.localStorage.setItem("macaca-theme", nextTheme ? "dark" : "light");
   }
 
-  useState(() => {
-    if (typeof window === "undefined") return false;
+  useEffect(() => {
     const savedTheme = window.localStorage.getItem("macaca-theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const shouldUseDark = savedTheme ? savedTheme === "dark" : prefersDark;
-    setTimeout(() => {
-      setDarkMode(shouldUseDark);
-      document.documentElement.classList.toggle("dark", shouldUseDark);
-    }, 0);
-    return false;
-  });
+    setDarkMode(shouldUseDark);
+    document.documentElement.classList.toggle("dark", shouldUseDark);
+  }, []);
 
   return (
     <main className="site-shell">
