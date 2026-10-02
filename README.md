@@ -1,14 +1,18 @@
-# Welcome to your Lovable project
+# Exact Match React
+
+எனக்கு நான் அனுப்பி இருக்கேன்ல photo. அதே மாதிரி ditto ஒரு react website பண்ணி கொடுக்கணும். அப்படியே ditto எல்லாமே ditto இருக்கணும். React website பண்ணி கொடுக்கணும்.
 
 This project was built with [Lovable](https://lovable.dev).
 
+**Live app**: https://macaca-ai.lovable.app
+
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/73033b11-f08e-4fe5-824d-7aba185ad33a).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +24,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
