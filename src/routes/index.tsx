@@ -9,7 +9,6 @@ import {
   CircleCheckBig,
   Clock3,
   Headphones,
-  HeartPulse,
   Inbox,
   Linkedin,
   Mail,
@@ -19,7 +18,6 @@ import {
   Phone,
   Play,
   ShieldCheck,
-  ShoppingBag,
   Sparkles,
   Star,
   Sun,
@@ -30,9 +28,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 
-import heroMascot from "@/assets/macca-hero-mascot.png";
 import heroMascotDark from "@/assets/macca-hero-mascot-dark-ready.png";
-import waveMascot from "@/assets/macca-wave-mascot.png";
 import waveMascotDark from "@/assets/macca-wave-mascot-dark-ready.png";
 import referenceHero from "@/assets/macaca-reference-hero.png";
 import referenceWave from "@/assets/macaca-reference-wave.png";
@@ -331,10 +327,6 @@ function Metric({ icon, value, label }: { icon: ReactNode; value: string; label:
 
 function Benefit({ icon, title, text }: { icon: ReactNode; title: string; text: string }) {
   return <div className="benefit"><span>{icon}</span><p><b>{title}</b><small>{text}</small></p></div>;
-}
-
-function Industry({ icon, name }: { icon: ReactNode; name: string }) {
-  return <div className="industry">{icon}<span>{name}</span></div>;
 }
 
 function DashboardMockup() {
