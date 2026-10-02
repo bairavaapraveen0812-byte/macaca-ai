@@ -30,6 +30,7 @@ import { useEffect, useState, type ReactNode } from "react";
 
 import heroMascotDark from "@/assets/macca-hero-mascot-dark-ready.png";
 import waveMascotDark from "@/assets/macca-wave-mascot-dark-ready.png";
+import macacaLogoMark from "@/assets/macaca-logo-mark.png";
 import referenceHero from "@/assets/macaca-reference-hero.png";
 import referenceWave from "@/assets/macaca-reference-wave.png";
 
@@ -115,7 +116,7 @@ function Brand() {
   return (
     <a href="#home" className="brand" aria-label="Macaca AI home">
       <span className="brand-mark">
-        <img src={referenceWave} alt="" width={42} height={42} />
+        <img src={macacaLogoMark} alt="" width={42} height={42} />
       </span>
       <span>Macaca <b>AI</b></span>
     </a>
