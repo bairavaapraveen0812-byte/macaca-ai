@@ -9,7 +9,6 @@ import {
   CircleCheckBig,
   Clock3,
   Headphones,
-  HeartPulse,
   Inbox,
   Linkedin,
   Mail,
@@ -19,7 +18,6 @@ import {
   Phone,
   Play,
   ShieldCheck,
-  ShoppingBag,
   Sparkles,
   Star,
   Sun,
@@ -30,10 +28,10 @@ import {
 } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 
-import heroMascot from "@/assets/macca-hero-mascot.png";
 import heroMascotDark from "@/assets/macca-hero-mascot-dark-ready.png";
-import waveMascot from "@/assets/macca-wave-mascot.png";
 import waveMascotDark from "@/assets/macca-wave-mascot-dark-ready.png";
+import referenceHero from "@/assets/macaca-reference-hero.png";
+import referenceWave from "@/assets/macaca-reference-wave.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -104,9 +102,9 @@ const reviews = [
   },
 ];
 
-function ActionLink({ children, outline = false }: { children: ReactNode; outline?: boolean }) {
+function ActionLink({ children, outline = false, href = "#contact" }: { children: ReactNode; outline?: boolean; href?: string }) {
   return (
-    <a className={outline ? "action-link action-link-outline" : "action-link"} href="#contact">
+    <a className={outline ? "action-link action-link-outline" : "action-link"} href={href}>
       {children}
       <ArrowRight size={15} />
     </a>
@@ -117,7 +115,7 @@ function Brand() {
   return (
     <a href="#home" className="brand" aria-label="Macaca AI home">
       <span className="brand-mark">
-        <Bot size={22} strokeWidth={2.5} />
+        <img src={referenceWave} alt="" width={42} height={42} />
       </span>
       <span>Macaca <b>AI</b></span>
     </a>
@@ -161,6 +159,8 @@ function Index() {
             <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
             <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
             <a href="#products" onClick={() => setMenuOpen(false)}>Products <ChevronDown size={13} /></a>
+            <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
+            <a href="#portfolio" onClick={() => setMenuOpen(false)}>Portfolio</a>
             <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
           </nav>
           <div className="nav-actions">
@@ -196,12 +196,12 @@ function Index() {
           </p>
           <div className="hero-actions">
             <ActionLink>Request Demo</ActionLink>
-            <ActionLink outline>Explore Products</ActionLink>
+            <ActionLink href="#products" outline>Explore Products</ActionLink>
           </div>
         </div>
 
         <div className="hero-visual">
-          <img src={darkMode ? heroMascotDark : heroMascot} alt="Macaca AI assistant working on a laptop" width={1024} height={1024} />
+          <img src={darkMode ? heroMascotDark : referenceHero} alt="Macaca AI assistant working on a laptop" width={1024} height={1024} />
           <div className="float-card call-card">
             <strong>Call Analytics</strong>
             <div className="waveform" aria-hidden="true">
@@ -270,7 +270,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="impact section-band">
+      <section id="services" className="impact section-band">
         <div className="page-width impact-grid">
           <div>
             <Kicker>WHY MACACA AI?</Kicker>
@@ -287,27 +287,13 @@ function Index() {
           </div>
           <div className="impact-visual">
             <div className="speech-bubble">I'm Macaca AI!<br /><b>Your 24/7 AI assistant.</b></div>
-            <img src={darkMode ? waveMascotDark : waveMascot} alt="Macaca AI assistant waving" loading="lazy" width={1024} height={768} />
+            <img src={darkMode ? waveMascotDark : referenceWave} alt="Macaca AI assistant waving" loading="lazy" width={1024} height={768} />
             <div className="impact-card"><CircleCheckBig /><span>Customer Sentiment<small>Positive <b>92%</b></small></span></div>
           </div>
         </div>
       </section>
 
-      <section className="enterprise page-width">
-        <Kicker>ENTERPRISE SOLUTIONS</Kicker>
-        <h2>AI for Every Business Need</h2>
-        <p className="section-intro">Secure, scalable, and built for the modern enterprise. Macaca AI helps teams across industries turn conversations into measurable outcomes.</p>
-        <div className="enterprise-row">
-          <Industry icon={<ShieldCheck />} name="BFSI" />
-          <Industry icon={<HeartPulse />} name="Healthcare" />
-          <Industry icon={<ShoppingBag />} name="Retail & E-commerce" />
-          <Industry icon={<Phone />} name="Telecom" />
-          <Industry icon={<Building2 />} name="Travel & Hospitality" />
-          <Industry icon={<Sparkles />} name="EdTech" />
-        </div>
-      </section>
-
-      <section className="reviews page-width">
+      <section id="portfolio" className="reviews page-width">
         <Kicker>WHAT OUR CLIENTS SAY</Kicker>
         <h2>Trusted by teams, loved by customers.</h2>
         <div className="review-grid">
@@ -322,13 +308,13 @@ function Index() {
       </section>
 
       <section id="contact" className="final-cta page-width">
-        <img src={darkMode ? waveMascotDark : waveMascot} alt="Macaca AI mascot" loading="lazy" width={1024} height={768} />
+        <img src={darkMode ? waveMascotDark : referenceHero} alt="Macaca AI mascot" loading="lazy" width={1024} height={1024} />
         <div><small>READY TO GET STARTED</small><h2>Let's Build a Smarter,<br />More Human Tomorrow</h2><p>Unlock the full potential of your customer conversations with Macaca AI.</p></div>
         <div className="cta-actions"><ActionLink>Request Demo</ActionLink><ActionLink outline>Contact Sales</ActionLink></div>
       </section>
 
       <footer className="site-footer page-width">
-        <div className="footer-main"><Brand /><nav><a href="#home">Home</a><a href="#about">About</a><a href="#products">Products</a><a href="#contact">Contact</a></nav><div className="socials"><a href="#contact" aria-label="LinkedIn"><Linkedin /></a><a href="#contact" aria-label="X"><X /></a><a href="#contact" aria-label="YouTube"><Youtube /></a></div></div>
+        <div className="footer-main"><Brand /><nav><a href="#home">Home</a><a href="#about">About</a><a href="#products">Products</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#contact">Contact</a></nav><div className="socials"><a href="#contact" aria-label="LinkedIn"><Linkedin /></a><a href="#contact" aria-label="X"><X /></a><a href="#contact" aria-label="YouTube"><Youtube /></a></div></div>
         <div className="footer-bottom"><span>© 2026 Macaca AI. All rights reserved.</span><span>Smarter Conversations. Better Decisions.</span></div>
       </footer>
     </main>
@@ -341,10 +327,6 @@ function Metric({ icon, value, label }: { icon: ReactNode; value: string; label:
 
 function Benefit({ icon, title, text }: { icon: ReactNode; title: string; text: string }) {
   return <div className="benefit"><span>{icon}</span><p><b>{title}</b><small>{text}</small></p></div>;
-}
-
-function Industry({ icon, name }: { icon: ReactNode; name: string }) {
-  return <div className="industry">{icon}<span>{name}</span></div>;
 }
 
 function DashboardMockup() {
